@@ -1,24 +1,30 @@
 <?php
 
-require_once '../../app/core/models/dao/base/InterfaceDao.php';
-require_once '../../app/core/models/dao/base/BaseDao.php';
-require_once '../../app/core/models/dao/CategoriaDao.php';
-require_once "../../app/config/DBConfig.php";
-require_once "../../app/libs/database/Connection.php";
-require_once '../../app/core/models/dto/base/InterfaceDto.php';
-require_once '../../app/core/models/dto/CategoriaDto.php';
+require_once '../../app/config/AppConfig.php';
+require_once '../../app/config/DBConfig.php';
+require_once '../../app/vendor/autoload.php';
 
 use app\libs\database\Connection;
 use app\core\models\dto\CategoriaDto;
 use app\core\models\dao\CategoriaDao;
 try{
-    $data = ["id" => 0, "nombre" => "remeras"];
-    $dto = new CategoriaDto($data);
+    // $data = ["id" => 0, "nombre" => "remeras123"];
+    // $dto = new CategoriaDto($data);
 
-    $dao = new CategoriaDao(Connection::get());
-    $dao->save($dto->toArray());
+    // $dao = new CategoriaDao(Connection::get());
+    // unset($data["id"]);
+    // $dao->save($data);
     
+
+    $data = ["id" => 71];
+    $dao = new CategoriaDao(Connection::get());
+    $result = $dao->load($data["id"]);
+    print_r($result);
+
 }
 catch(\PDOException $ex){
     echo "Error database => " . $ex->getMessage();
+}
+catch(\Exception $ex){
+    echo "Error sistema => " . $ex->getMessage();
 }

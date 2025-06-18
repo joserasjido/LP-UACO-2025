@@ -12,15 +12,19 @@ final class CategoriaDao extends BaseDao implements InterfaceDao{
     }
 
     public function load(int $id): array{
-        return ["dato" => "prueba"];
+        $sql = "SELECT id, nombre FROM {$this->table} WHERE id = :id";
+        $stmt = $this->connection->prepare($sql);
+        $stmt->execute(["id" => $id]);
+        if($stmt->rowCount() == 0){
+            throw new \Exception("No se encontraron coincidencias para el identificador de la Marca ({$id})");
+        }
+        return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
     public function save(array $data): void{
         $sql = "INSERT INTO {$this->table} VALUES(DEFAULT, :nombre)";
         $stmt = $this->connection->prepare($sql);
-        $stmt->execute([
-            "nombre" => $data["nombre"]
-        ]);
+        $stmt->execute($data);
     }
 
     public function update(array $data): void{

@@ -28,7 +28,7 @@ final class CategoriaDto implements InterfaceDto{
     }
 
     public function setNombre(string $nombre): void{
-    $this->nombre = $nombre;
+    $this->nombre = (strlen(trim($nombre)) <= 100) ? trim($nombre) : "";
     }
 
     public function toArray(): array{
