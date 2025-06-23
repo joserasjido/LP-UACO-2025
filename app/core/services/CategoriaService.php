@@ -11,7 +11,8 @@ use app\libs\database\Connection;
 final class CategoriaService implements InterfaceService{
     
     public function load(int $id): InterfaceDto{
-        return new CategoriaDto();
+        $dao = new CategoriaDao(Connection::get());
+        return new CategoriaDto($dao->load($id));
     }
 
     public function save(InterfaceDto $dto): void{
