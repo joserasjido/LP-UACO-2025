@@ -16,7 +16,7 @@ final class CategoriaDao extends BaseDao implements InterfaceDao{
         $stmt = $this->connection->prepare($sql);
         $stmt->execute(["id" => $id]);
         if($stmt->rowCount() == 0){
-            throw new \Exception("No se encontraron coincidencias para el identificador de la Marca ({$id})");
+            throw new \Exception("No se encontraron coincidencias para el identificador de la Categoria ({$id})");
         }
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
