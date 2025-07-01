@@ -13,7 +13,7 @@ final class CategoriaController extends BaseController implements InterfaceContr
 
     public function index(Request $request, Response $response): void{
         array_push($this->scripts, "app/js/categoria/index.js");
-        //$this->setCurrentView($request);
+        $this->setCurrentView($request);
         require_once APP_FILE_TEMPLATE;
     }
 
@@ -25,7 +25,9 @@ final class CategoriaController extends BaseController implements InterfaceContr
     }
 
     public function create(Request $request, Response $response): void{
-
+        array_push($this->scripts, "app/js/categoria/create.js");
+        $this->setCurrentView($request);
+        require_once APP_FILE_TEMPLATE;
     }
 
     public function save(Request $request, Response $response): void{
@@ -38,7 +40,9 @@ final class CategoriaController extends BaseController implements InterfaceContr
     }
 
     public function edit(Request $request, Response $response): void{
-
+        array_push($this->scripts, "app/js/categoria/edit.js");
+        $this->setCurrentView($request);
+        require_once APP_FILE_TEMPLATE;
     }
 
     public function update(Request $request, Response $response): void{

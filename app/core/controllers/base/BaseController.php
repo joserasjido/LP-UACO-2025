@@ -15,4 +15,8 @@ class BaseController{
         $this->scripts = $scripts;
         $this->styles = $styles;
     }
+
+    public function setCurrentView(Request $request): void{
+        $this->view = $request->getController() . "/" . $request->getAction() . ".php";
+    }
 }
