@@ -21,3 +21,13 @@ define('APP_FILE_LOGOUT',   APP_DIR_VIEWS . 'authentication/logout.php');
 
 const APP_DEFAULT_CONTROLLER = "authentication";
 const APP_DEFAULT_ACTION = "index";
+
+const APP_AUTHENTICATION_CONTROLLER = "authentication";
+const APP_LOGIN_ACTION = "login";
+
+
+//#########################################
+// MANEJO DE SESIONES
+//#########################################
+
+const APP_TOKEN = '$2y$10$oCjV/sMs8H/G1nkZnTyws.S.j6trEH6KHAolWrmYPdr2JRoWl.pFe';

@@ -5,6 +5,7 @@ use app\libs\pipeline\Pipeline;
 use app\libs\pipeline\middlewares\ExceptionHandlerMiddleware;
 use app\libs\http\Request;
 use app\libs\http\Response;
+use app\libs\pipeline\middlewares\AuthenticationMiddleware;
 use app\libs\pipeline\middlewares\RouterHandlerMiddleware;
 
 /**
@@ -22,6 +23,7 @@ final class App{
 
         $pipeline
         ->pipe(new ExceptionHandlerMiddleware())
+        ->pipe(new AuthenticationMiddleware())
         ->pipe(new RouterHandlerMiddleware());
 
         $pipeline->process(new Request(), new Response());
